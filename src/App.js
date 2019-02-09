@@ -13,7 +13,7 @@ class App extends Component {
       <>
       <div className='row'>
       {this.state.cities.map((city,i)=> {
-      return (<City location={city} owmAPI={process.env.REACT_APP_OWM_API_KEY} key={i}/>)
+      return (<City location={city} key={i}/>)
       })}
       </div>
       <h5 className='center-align' style={{paddingBottom:30}}>What'll it be this weekend?? Type 2 or type 1 fun?</h5>

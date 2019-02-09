@@ -23,7 +23,8 @@ export default class City extends Component {
   }
 
   getForecastForCity = async (city) => {
-      const forecast = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city.replace(/' '/%20)},us&appid=${this.props.owmAPI}`).then(response => response.json()).catch(data => console.log(data))
+      const owmAPI = process.env.REACT_APP_OWM_API_KEY
+      const forecast = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city.replace(/' '/%20)},us&appid=${owmAPI}`).then(response => response.json()).catch(data => console.log(data))
       const friday = this.getDay(forecast, 1)
       const saturday = this.getDay(forecast, 2)
       const sunday = this.getDay(forecast, 3)
