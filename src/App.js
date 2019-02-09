@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import City from './City'
 
 class App extends Component {
+
+  state = {
+    cities:[['Estes Park','Rocky Mountain National Park'], ['Center','Great Sand Dunes National Park'], ['Ouray','Uncompahgre National Forest']],
+  }
+
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+   return (
+      <>
+      <div className='row'>
+      {this.state.cities.map((city,i)=> {
+      return (<City location={city} owmAPI={process.env.REACT_APP_OWM_API_KEY} key={i}/>)
+      })}
       </div>
+      <h5 className='center-align' style={{paddingBottom:30}}>What'll it be this weekend?? Type 2 or type 1 fun?</h5>
+      </>
     );
   }
 }
