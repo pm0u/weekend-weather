@@ -15,7 +15,6 @@ export default class City extends Component {
     }
 
     getDay = (forecast, daysAhead) => {
-        const dayOfMonth = parseInt(new Date().getDate())
         const day = forecast.list.filter(hourly => {
             return moment(hourly.dt * 1000).isSame(moment(new Date()).add(daysAhead, 'days'), 'day')
         })
