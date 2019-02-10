@@ -39,37 +39,61 @@ export default class City extends Component {
 
     dayForecast = (day) => {
         return this.state[day].map((hour, i) => {
-            return (<li className='collection-item' key={i} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>{`${moment(hour.dt * 1000).format('LT')}:`}</span><span> {`${this.tempToF(hour.main.temp)}°F`}</span><span>{`${hour.weather[0].description}`}</span>
-                <img className='right-align' src={`http://openweathermap.org/img/w/${hour.weather[0].icon}.png`} />
-            </li>)
+            return (<tr key={i}>
+                <td>{`${moment(hour.dt * 1000).format('LT')}`}</td>
+                <td>{`${this.tempToF(hour.main.temp)}°F`}</td>
+                <td>{`${hour.weather[0].description}`}
+                <img className='right' src={`http://openweathermap.org/img/w/${hour.weather[0].icon}.png`} /></td>
+            </tr>)
         })
     }
 
     render() {
         return (
-            <>
-                <div className='col s12 l4 m4'>
-                    <div className="card blue-grey lighten-5">
-                        <div className="card-content">
-                            <span className="card-title"><h4>Forecast for {this.props.location[0]}</h4></span>
-                            <h5>Near {this.props.location[1]}</h5>
-                            <ul className='collection with-header'>
-                                <li className='collection-header'>Friday</li>
-                                {this.dayForecast('friday')}
-                            </ul>
-                            <ul className='collection with-header'>
-                                <li className='collection-header'>Saturday</li>
-                                {this.dayForecast('saturday')}
-                            </ul>
-                            <ul className='collection with-header'>
-                                <li className='collection-header'>Sunday</li>
-                                {this.dayForecast('sunday')}
-                            </ul>
-                        </div>
+            <div className='col s12 l4 m4'>
+                <div className="card blue-grey lighten-5">
+                    <div className="card-content">
+                        <span className="card-title"><h4>Forecast for {this.props.location[0]}</h4></span>
+                        <h5>Near {this.props.location[1]}</h5>
+                        <div className='divider'></div>
+                        <h5>Friday</h5>
+                        <table>
+                            <thead>
+                                <tr>
+                                <th>Time</th>
+                                <th>Temp</th>
+                                <th>Weather</th>
+                                </tr>
+                            </thead>
+                            {this.dayForecast('friday')}
+                        </table>
+                        <div className='divider'></div>
+                        <h5>Saturday</h5>
+                        <table>
+                            <thead>
+                                <tr>
+                                <th>Time</th>
+                                <th>Temp</th>
+                                <th>Weather</th>
+                                </tr>
+                            </thead>
+                            {this.dayForecast('saturday')}
+                        </table>
+                        <div className='divider'></div>
+                        <h5>Sunday</h5>
+                        <table>
+                            <thead>
+                                <tr>
+                                <th>Time</th>
+                                <th>Temp</th>
+                                <th>Weather</th>
+                                </tr>
+                            </thead>
+                            {this.dayForecast('sunday')}
+                        </table>
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
