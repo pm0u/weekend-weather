@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.time  {
+  width:25%;
+}
+
+.temp {
+  width: 25%;
+}
+
+.weather {
+  width: 50%;
+}

@@ -39,9 +39,9 @@ export default class City extends Component {
     dayForecast = (day) => {
         return this.state[day].map((hour, i) => {
             return (<tr key={i}>
-                <td>{`${moment(hour.dt * 1000).format('LT')}`}</td>
-                <td>{`${this.tempToF(hour.main.temp)}°F`}</td>
-                <td>{`${hour.weather[0].description}`}
+                <td className='time'>{`${moment(hour.dt * 1000).format('LT')}`}</td>
+                <td className='temp'>{`${this.tempToF(hour.main.temp)}°F`}</td>
+                <td className='weather'>{`${hour.weather[0].description}`}
                 <img className='right' src={`http://openweathermap.org/img/w/${hour.weather[0].icon}.png`} /></td>
             </tr>)
         })
